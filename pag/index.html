@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Furia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+      <h2>Chat FURIA <img src="furia.png" alt="Logo da FURIA"  style="height: 30px; vertical-align: middle;"></h2></h2>
+      <div id="chat"></div>
+      <div class="input-group">
+        <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+        <button id="sendButton">Enviar</button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+  
+</html>
