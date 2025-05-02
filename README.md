@@ -31,12 +31,15 @@ Tudo isso através de comandos simples em uma interface web.
 
 ## Estrutura do projeto
 
-furia-chat/
-├── server.js           # Servidor Express com Socket.IO
+```text
+web-chat-furia/
+├── server.js           # Servidor Express com integração do Socket.IO
 └── pag/
     ├── index.html      # Interface do chat
-    ├── style.css       # Estilos
+    ├── style.css       # Estilos da página
     └── script.js       # Lógica do chat e comunicação com o servidor
+```
+
 
      
 
