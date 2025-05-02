@@ -19,6 +19,7 @@ Tudo isso através de comandos simples em uma interface web.
 - Comandos para interação:
   - `/calendario` – exibe os próximos jogos da FURIA.
   - `/jogadores` – mostra os jogadores de CS, LoL, Valorant, etc.
+  - - `/jogadores-{nomeJogador}` – mostra uma foto do jogador pesquisado.
   - `/historia` – traz um resumo da trajetória da FURIA.
   - `/limpar` – limpa o chat.
 
