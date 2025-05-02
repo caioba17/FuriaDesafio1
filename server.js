@@ -8,13 +8,37 @@ const chatIo = socketIo(server);
 
 app.use(express.static('pag'));
 
+const jogadoresImagens = {
+    fallen: 'fallen.png',
+    yuurih: 'yuurih.png',
+    kscerato: 'kscerato.png',
+    molodoy: 'molodoy.png',
+    heat: 'heat.png',
+    raafa: 'raafa.png',
+    havoc: 'havoc.png',
+    khalil: 'khalil.png',
+    pryze: 'pryze.png',
+    nade: 'nade.png',
+    herdsz: 'herdsz.png',
+    kheyze: 'kheyze.png',
+    jv92: 'jv92.png',
+    felipox: 'felipox.png', 
+    tutsz: 'tutsz.png',
+    ayu: 'ayu.png',
+    jojo: 'jojo.png',
+    drufinho: 'drufinho.png',
+    yanxnz: 'yanxnz.png',
+    lostt: 'lostt.png',
+};
+
 chatIo.on('connection', (socket) => {
     console.log('usuário conectado');
 
     socket.on('setNome', (nome) => {
         // Mensagem de boas-vindas
         chatIo.emit('mensagem', `👋 Bem-vindo, <strong>${nome}</strong>! Use os comandos abaixo para interagir:<br><br>👉 /calendario - Calendário de jogos até o dia 05/01/2025
-            <br>👉 /jogadores - Informações sobre os jogadores<br>👉 /historia - Breve história da FURIA<br>👉 /limpar - Limpar o chat`);
+            <br>👉 /jogadores - Informações sobre os jogadores<br>👉 /jogadores-{nome} - Foto do jogador<br>👉 /historia - Breve história da FURIA<br>👉 /limpar - Limpar o chat
+            <br>👉 /tchau - Despedida!`);
     });
 
     socket.on('mensagem', (msg) => {
@@ -39,10 +63,23 @@ chatIo.on('connection', (socket) => {
         } else if (msg === '/limpar') {
             chatIo.emit('clearChat');
             chatIo.emit('mensagem', '🧹 O chat foi limpo!');
+            chatIo.emit('mensagem', 'Use os comandos abaixo para interagir:<br><br>👉 /calendario - Calendário de jogos até o dia 05/01/2025<br>👉 /jogadores - Informações sobre os jogadores<br>👉 /historia - Breve história da FURIA<br>👉 /limpar - Limpar o chat');
         } else if (msg === '/historia') {
             const historia = 'A FURIA é uma organização de esports brasileira fundada em 2017 por André Akkari, Jaime Pádua e Cris Guedes em Uberlândia-MG. Representar o Brasil no cenário competitivo de Couter Strike era o objetivo, com isso, a Furia' +
             'rapidamente se destacou no mundo dos esports. Hoje, a FURIA é uma das organizações mais respeitadas e reconhecidas do Brasil, com equipes em diversos jogos como Counter-Strike: Global Offensive, League of Legends, Rainbow Six Siege, Valorant e PUBG.';
             chatIo.emit('mensagem', historia);
+        } else if (msg.startsWith('/jogadores-')) {
+            const jogador = msg.split('-')[1].toLowerCase();
+
+            const imagemJogador = jogadoresImagens[jogador];
+
+            if (imagemJogador) {
+                chatIo.emit('mensagem', {tipo: 'imagem', conteudo: `imagens/${jogador}.png`})
+            } else {
+                chatIo.emit('mensagem', 'Jogador não encontrado!');
+            }
+        } else if (msg === '/tchau') {
+            chatIo.emit('mensagem', '👋 Até logo! Fique ligado nos jogos da FURIA!');
         }
         else {
             chatIo.emit('mensagem', msg);
