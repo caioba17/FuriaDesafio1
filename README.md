@@ -32,11 +32,11 @@ Tudo isso através de comandos simples em uma interface web.
 ## Estrutura do projeto
 
 web-chat-furia/
-|--- server.js # Servidor Express com Socket.IO
-|--- pag/
-     |--- index.html # Frontend do chat
-     |--- style.css # Estilos
-     |--- script.js # Lógica do chat com socket
+├── server.js # Servidor express com socket.io
+└── pag/
+├── index.html # Interface do chat
+├── style.css # Estilos
+└── script.js # Lógica do chat e integração com socket
      
 
 ##  Instalação e Execução
@@ -45,7 +45,6 @@ web-chat-furia/
    ```bash 
    git clone https://github.com/caioba17/FuriaDesafio1.git
    cd web-chat-furia
-   Instale as dependências:
 
 2. Instale as dependências:
    
